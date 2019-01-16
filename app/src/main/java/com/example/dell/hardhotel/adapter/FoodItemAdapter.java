@@ -62,7 +62,7 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
             public void onClick(View v) {
                 foodItem.setCount(foodItem.getCount() + 1);
                 holder.qtyview.setText(String.valueOf(foodItem.getCount()));
-              FoodDatabase.getDatabase(context).foodDao().updateFoodItem(foodItem);
+             // FoodDatabase.getDatabase(context).foodDao().updateFoodItem(foodItem);
                  onItemClickListener.onFoodItemClick(foodItem);
 
 
@@ -76,7 +76,7 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
                 if (foodItem.getCount() > 0) {
                     foodItem.setCount(foodItem.getCount() - 1);
                     holder.qtyview.setText(String.valueOf(foodItem.getCount()));
-                   FoodDatabase.getDatabase(context).foodDao().updateFoodItem(foodItem);
+                 //  FoodDatabase.getDatabase(context).foodDao().updateFoodItem(foodItem);
                      onItemClickListener.onFoodItemClick(foodItem);
                 }
             }
@@ -91,6 +91,7 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
 
     public interface OnItemClickListener {
         void onFoodItemClick(FoodItem Item);
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -113,4 +114,9 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
 
 
     }
+    public void setFoodItems(List<FoodItem> foodItems) {
+        foodItems = foodItems;
+        notifyDataSetChanged();
+    }
+
 }

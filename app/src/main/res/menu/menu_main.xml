@@ -8,10 +8,10 @@
           app:actionLayout="@layout/customer_count_layout"
           android:title="cart"
           app:showAsAction="always"/>
-   <!-- <item android:id="@+id/action_filter"
+    <item android:id="@+id/action_filter"
           android:orderInCategory="100"
           android:icon="@drawable/ic_filter"
           android:title="filter"
           app:showAsAction="always"
-    />-->
+    />
 </menu>

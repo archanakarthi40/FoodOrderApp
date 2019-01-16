@@ -37,16 +37,15 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartVi
     public void onBindViewHolder(@NonNull CartViewHolder cartViewHolder, int i) {
 
         final FoodItem foodItem = foodItems.get(i);
-        String images = foodItem.getImage_url();
-        int getcount=foodItem.getCount();
-        String getprice=foodItem.getItem_price();
-        int convertprice=Integer.parseInt(getprice);
-        int total=getcount*convertprice;
 
+        int getcount=foodItem.getCount();
+
+        double convertprice=Double.parseDouble(foodItem.getItem_price());
+        int total= (int) (getcount*convertprice);
         cartViewHolder.foodtitle.setText(foodItem.getItem_name());
         cartViewHolder.price.setText("Price:"+foodItem.getItem_price());
         cartViewHolder.totalPrice.setText("Quantity-"+getcount+":Total:"+String.valueOf(total));
-
+        String images = foodItem.getImage_url();
         Glide.with(context)
                 .load(images)
                 .into(cartViewHolder.icon);
@@ -78,6 +77,10 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartVi
 
 
         }
+    }
+    public void setCartItems(List<FoodItem> cartFoodItems) {
+        foodItems = cartFoodItems;
+        notifyDataSetChanged();
     }
 
 
